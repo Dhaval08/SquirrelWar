@@ -1,7 +1,8 @@
-#this function will calculate the X and O score of the current board state.
+# @author Dhaval Shah
+
 import sys
 
-
+#this function will calculate the X and O score of the current board state.
 def calculateScore(currentState, playerName):
 
     XScore = 0
