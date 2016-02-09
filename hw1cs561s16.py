@@ -81,6 +81,7 @@ def checkRaidO(i, j, currentState):
 
     return tempraid
 
+#greedy best first search
 
 def greedyBestFirstSearch(playerName, currentState):
 
@@ -223,7 +224,7 @@ def greedyBestFirstSearch(playerName, currentState):
     return(tempi, tempj, currentState)
 
 
-
+#this function will calculate (playerscore - opponentscore)
 
 def calculateUtility(boardState, playerName):
     XScore = 0
@@ -250,6 +251,8 @@ def calculateUtility(boardState, playerName):
 
     leaf = int(playerScore - opponentScore)
     return leaf
+
+#this function will convert to 00 to A1 and so on
 
 def numberToAlphabets(i,j):
     if i == 0:
@@ -278,6 +281,8 @@ def numberToAlphabets(i,j):
 
 #this function will print traverse_log for miniMax
 
+#to print traverse_state.txt for minimax
+
 def traverseLog(i, j, logDepth, logUtility):
 
     if logUtility == float('inf'):
@@ -300,6 +305,8 @@ def traverseLog(i, j, logDepth, logUtility):
         #print(str(x),y,logDepth,logUtility)
         append = open('traverse_log.txt', 'a')
         append.write(str(y)+str(x)+','+str(logDepth) +',' + str(logUtility)+'\n')
+
+#to print traverse_log.txt for alpha-beta
 
 def traverseLogAlphaBeta(i, j, logDepth, logUtility, alpha, beta):
 
@@ -336,6 +343,8 @@ def traverseLogAlphaBeta(i, j, logDepth, logUtility, alpha, beta):
         append = open('traverse_log.txt', 'a')
         append.write(str(y)+str(x)+','+str(logDepth)+','+str(logUtility)+','+str(alpha)+','+str(beta)+'\n')
         append.close()
+
+#minimax
 
 def miniMax(printTraverse, currentStateMatrix, boardValuesMatrix, playerTag, cutoffDepth, depth, constantplayerName, selfPosi, selfPosj):
 
@@ -478,6 +487,7 @@ def miniMax(printTraverse, currentStateMatrix, boardValuesMatrix, playerTag, cut
     return utility, tempi, tempj
 
 
+#alphabeta pruning
 
 def alphaBeta(printTraverse, alpha, beta, currentStateMatrix, boardValuesMatrix, playerTag, cutoffDepth, depth, constantplayerName, selfPosi, selfPosj):
 
@@ -550,20 +560,27 @@ def alphaBeta(printTraverse, alpha, beta, currentStateMatrix, boardValuesMatrix,
 
 
                     if depth%2 == 0:
+                        if childEvaluation > utility:
+                                utility = childEvaluation
                         if childEvaluation > tempAlpha:
                             alpha = childEvaluation
-                            utility = childEvaluation
+
                             if depth == 0:
                                  tempi = i
                                  tempj = j
+
                     else:
+                        if childEvaluation < utility:
+                            utility = childEvaluation
                         if childEvaluation < tempBeta:
                             #print('hurray',tempBeta)
-                            utility = childEvaluation
+
                             beta = childEvaluation
                             if depth == 0:
                                 tempi = i
                                 tempj = j
+
+
 
                     if alpha>=beta:
                         if printTraverse == 1:
@@ -617,16 +634,18 @@ def alphaBeta(printTraverse, alpha, beta, currentStateMatrix, boardValuesMatrix,
 
 
                     if depth%2 == 0:
+                        if childEvaluation > utility:
+                                utility = childEvaluation
                         if childEvaluation > tempAlpha:
                             alpha = childEvaluation
-                            utility = childEvaluation
+
                             if depth == 0:
                                  tempi = i
                                  tempj = j
                     else:
+                        if childEvaluation < utility:
+                                utility = childEvaluation
                         if childEvaluation < tempBeta:
-
-                            utility = childEvaluation
                             beta = childEvaluation
                             if depth == 0:
                                 tempi = i
@@ -649,6 +668,7 @@ def alphaBeta(printTraverse, alpha, beta, currentStateMatrix, boardValuesMatrix,
 
     return alpha, beta, utility, tempi, tempj
 
+#this function will simulate the game till the board is full
 
 def simulateGame(printTraverse, emptySpaces, boardValuesMatrix, playerCondition, currentState, firstPlayer, secondPlayer, firstAlgorithmTag, secondAlgorithmTag, firstCutoff, secondCutoff):
 

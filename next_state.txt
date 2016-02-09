@@ -1,5 +1,5 @@
-XXXXX
-OOOOO
-XXXXX
-OOOOX
-XXXXX
+**XX*
+**XOX
+**XX*
+**XO*
+*****
