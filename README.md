@@ -31,37 +31,4 @@ E(s) = Total_Value_Player - Total_Value_Opponent
 
 
 
-For each test case, you are provided with an input file that describes the current state of the game. In the input and output files, the two sides will be represented as X and O.
-<task#>
-Greedy Best­first Search = 1, MiniMax = 2, Alpha­beta Pruning = 3
-<your player> X or O
-<cutting off depth>
-Cut­off depth started from the root.
-<board grid value>
-Positive integers from 1 ­ 99
-5 in each row separated with a space, 5 total rows <current board state>
-*: Unoccupied
-X: Player 1
-O: Player 2
-5 in each row, no space in between, 5 total rows The ordering corresponds with the board values.
-
-Sample Input:
-2
-X
-2
-20 16 1 32 30 
-20 12 2 11 8 
-28 48 9 1 1
-20 12 10 6 2 
-25 30 23 21 10 
-**XX*
-**XOX
-***O*
-**OO* 
-*****
-
-For each test case, your program should output a file named “next_state.txt” 
-For Minimax and Alpha-Beta Pruning, output another file named “traverse_log.txt” showing the traverse log of your program.
-
-
 
